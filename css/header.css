@@ -1,0 +1,14 @@
+header {
+    /* Цвет Фона */
+    background-color: #eaeddb;
+    color: #002f58;
+    padding: 25px;
+}
+
+h1 {
+    margin: 0;
+}
+
+#menu{
+    display: flex;
+}

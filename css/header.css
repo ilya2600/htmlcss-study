@@ -23,7 +23,7 @@ header {
     border-bottom-width: 5px;
     padding: 5px;
 }
-img {
+#header-icon {
     width: 5vw; /* viewport width - ширина окна браузера */
     min-width: 35px;
     max-width: 70px;

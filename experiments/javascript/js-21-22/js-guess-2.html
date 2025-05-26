@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <h3>Угадай число!</h3>
+    
+    <input type="text" id="inp1">
+    <button onclick="CheckNum()">Проверка</button>
+    <p id="result">Результат: </p>
+
+    <script>
+    
+        var inp1 = document.querySelector("#inp1")
+        
+        var result = document.querySelector("#result")
+
+        var randNum = 1 + Math.random() * 8
+
+        console.log(randNum)
+
+        var randInt1 = Math.round(randNum)
+        var randInt2 = Math.floor(randNum)
+        var randInt3 = Math.ceil(randNum)
+        
+        function CheckNum(){
+            result.textContent = Number(inp1.value) === randInt1
+            
+            if (inp1.value === "") {
+                
+                result.textContent = "Введите число!!!"
+                
+            } else if (Number(inp1.value) === randInt1) {
+                
+                result.textContent = "Ура! Победа!"
+                
+            } else if (Number(inp1.value) > randInt1) {
+                
+                result.textContent = "Загаданное число меньше!"
+                
+            } else if (Number(inp1.value) < randInt1) {
+                
+                result.textContent = "Загаданное число больше!"
+                
+            } 
+        
+        }
+    </script>
+</body></html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body onclick="test()" style="width: 100vw; height: 100vh;">
+    <script>
+        function test(){
+            var gems = ["🍕","🍔","🌭"]
+
+            var randIndex = Math.round(Math.random() * (gems.length - 1))
+
+            var slot1 = gems[randIndex]
+
+            //slot2 - randIndex2, slot3 - randIndex3
+
+            console.log(randIndex, slot1)
+
+            document.querySelector("body").innerHTML += slot1
+            
+            /*
+            if (slot1 === "🍕"){
+                if (slot2 === "🍕"){
+                    if (slot3 === "🍕"){
+                        //ПОБЕДА!
+                    }
+                }
+            }
+            */
+            
+        }
+    </script>
+</body>
+</html>

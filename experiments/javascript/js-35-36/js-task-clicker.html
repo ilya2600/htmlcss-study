@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        body{
+            text-align: center;
+        }
+        img {
+            width: 300px;
+            transition: 0.1s;
+        }
+        img:hover{
+            transform: scale(1.025);
+        }
+        img:active{
+            transform: scale(0.95);
+        }
+    </style>
+</head>
+<body>
+    <img src="https://images.steamusercontent.com/ugc/2021598835579995526/E9AE2816C3CBB162E9F6E594CC998B5C24D7FC03/?imw=512&&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=false" onclick="Click()" alt="">
+    <p>0</p>
+    <script>
+        var points = localStorage.getItem("clickerPoints");
+        
+        function Click(){
+            
+            points++; //0 -> 1
+            
+            //прошлый раз: 15
+            localStorage.setItem("clickerPoints",points) //то теперь: 1
+            
+            
+            
+            document.querySelector("p").textContent = points;
+            
+            
+        }
+        
+        document.querySelector("p").textContent = localStorage.getItem("clickerPoints")
+    </script>
+</body>
+</html>

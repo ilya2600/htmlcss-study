@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        body {
+            max-width: 500px;
+            margin: auto;
+            font-family: sans-serif;
+            background-color: #f2f2f2;
+            color: #333;
+        }
+        input, textarea {
+            width: 100%;
+            margin-bottom: 10px;
+            font-size: 16px;
+            padding: 10px;
+            border-width: 1px;
+            border-style: solid;
+            border-color: #ccc;
+            border-radius: 6px;
+        }
+        button {
+            cursor: pointer;
+            color: white;
+            background-color: #4CAF50;
+            font-size: 16px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 6px;
+        }
+        .comment{
+            background-color: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.25);
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+        .user{
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #2e7d32;
+        }
+        
+    </style>
+</head>
+<body>
+    <h2>Javascript: язык для интерактивных сайтов!</h2>
+    
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae, quisquam, perferendis! Mollitia adipisci ea autem! Earum commodi error quod explicabo rem magni maiores dolor ea ipsam blanditiis autem at, eaque neque, dignissimos provident tempore assumenda cumque voluptatum? Praesentium, perspiciatis.</p>
+    
+    <p>Consectetur adipisicing elit. Sit maiores tempore alias, ex dolorem reiciendis qui reprehenderit magni necessitatibus ratione quam corporis non hic aspernatur labore molestias delectus explicabo? Ratione facere, veritatis incidunt dolorum temporibus! Animi veritatis, porro autem mollitia voluptatem id ex totam dicta ullam possimus!</p>
+    
+    <h3>Добавить комментарий:</h3>
+    <input type="text" id="userInput"><br>
+    <textarea id="textInput"></textarea>
+    <button onclick="AddComment()">Отправить</button>
+    
+    <h3>Комментарии:</h3>
+    <div id="comments"></div>
+    
+    <script>
+        var commentID = localStorage.getItem("nc_CommentID")
+        function AddComment(){
+            // получите значения из ячеек ввода (проверьте их через консоль)
+            var user = document.querySelector("#userInput").value
+            var text = document.querySelector("#textInput").value
+            
+            console.log(user, text)
+            
+            // оповещение о пустоте user или text
+            if (user === ""){
+                alert("Нужно написать имя автора!")
+            }
+            if (text === ""){
+                alert("Нужно написать текст комментария!")
+            }
+            
+            localStorage.setItem("nc_Comment" + commentID, text);
+            localStorage.setItem("nc_User" + commentID, user);
+            commentID++;
+            
+            localStorage.setItem("nc_CommentID", commentID);
+            
+            // добавить комментарий в DOM (на страницу)
+            document.querySelector("#comments").innerHTML +=
+                `<div class="comment">
+                    <div class="user">${user}</div>
+                    <div class="text">${text}</div>
+                </div>`
+        }
+        
+        function LoadComment(){
+            
+            var i = 1;
+            while (i < commentID){
+                var text = localStorage.getItem("nc_Comment" + i)
+                var user = localStorage.getItem("nc_User" + i)
+
+                document.querySelector("#comments").innerHTML +=
+                    `<div class="comment">
+                        <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJxo2NFiYcR35GzCk5T3nxA7rGlSsXvIfJwg&s' width=100px>
+                        <div class="user">${user}</div>
+                        <div class="text">${text}</div>
+                    </div>`
+                i++
+            }
+        }
+        
+        LoadComment()
+    </script>
+</body>
+</html>

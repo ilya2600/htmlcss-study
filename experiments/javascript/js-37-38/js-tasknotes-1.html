@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            background-color: #ebfada;
+            text-align: center;
+        }
+
+        textarea {
+            width: 70%;
+            max-width: 500px;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            margin-bottom: 10px;
+        }
+
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+            transform: scale(1.05);
+        }
+
+        .comment {
+            min-height: 150px;
+            min-width: 125px;
+            max-width: 150px;
+            display: inline-block;
+            background-color: white;
+            padding: 15px;
+            margin: 10px;
+            text-align: left;
+            border-radius: 5px;
+            border-style: solid;
+            border-color: #3498db;
+            border-left-width: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.35);
+
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 
+        Сделать: "приложение" для заметок
+        Пользователь вводит текст и может сохранить запись на страницу
+        
+        Использовать минимальные стили CSS для создания карточки "заметка"
+    -->
+
+    <!--
+        Разбор на элементы:
+        - Заголовок
+        - текстовое поле для ввода
+        - кнопка "сохранить"
+        - карточка заметки
+        - CSS: граница, округление углов, фоновый цвет, отступы
+        - JS:
+            - Функция
+            - onclick атрибут и связь с функцией
+            - манипуляция DOM (document объект)
+            - создание новых HTML элементов (через innerHTML)
+    -->
+    
+
+    <h2> Заметки </h2>
+
+    <textarea id="commentBox"></textarea>
+
+    <br>
+    <button onclick="AddNote()">Отправить</button>
+
+    <h3>Все заметки:</h3>
+    <div id="commentList"></div>
+
+    <script>
+        function AddNote() {
+            var textArea = document.querySelector("#commentBox")
+            var text = textArea.value
+
+            document.querySelector("#commentList").innerHTML +=
+                `<div class='comment'>
+                    ${text}
+                </div>`
+
+            textArea.value = ""
+        }
+    </script>
+</body></html>

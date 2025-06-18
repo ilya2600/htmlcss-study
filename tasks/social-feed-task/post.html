@@ -1,0 +1,159 @@
+<!--
+Функционал:
+- Генерирование постов:
+    - Имя и Фото аккаунта
+    - Фото поста
+    - Текст поста
+    - Лайки, Избранное, Комменты
+    - Время загрузки
+    
+Элементы:
+- Пост:
+    - Имя и Фото аккаунта
+    - Фото поста
+    - Текст поста
+    - Лайки, Избранное, Комменты
+    - Время загрузки
+- Модули:
+    - Генерации текста из набора слов Lorem ipsum.
+    - Случайный выбор картинок из готового набора.
+    - Генерация чисел через Math.Random().
+    - Генерация времени через Date.now().
+    
+План Выполнения:
+1. Дизайн Поста
+2. Скрипт Генерации Поста
+    2.1 Генерация Картинок
+        2.1.1 Скачать набор (5-10)
+        2.1.2 Модуль выбора картинок
+    2.2 Генерация Текст
+        2.2.1 Создать набор слов
+        2.2.2 Модуль создания текста
+    2.3 Генерация Чисел
+    2.4 Генерация Времени
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Post</title>
+    <style>
+        :root{
+            --primary: #80d6c6;
+            --secondary: #d0e3be;
+            --tertiary: #fff0e3;
+        }
+        body{
+            background-color: var(--secondary);
+        }
+        .post{
+            background-color: var(--primary);
+            width: 250px;
+            padding: 5px;
+            border-radius: 10px;
+            border-style: solid;
+            border-color: rgba(0,0,0,0.15);
+            border-width: 1px;
+            box-shadow: 0px 3px 0px rgba(0,0,0,0.1)
+        }
+        .post-account{
+            display: flex;
+            width: 100%;
+            padding-bottom: 10px;
+        }
+        .post-account-img{
+            background-color: #e2e2e2;
+            width: 40px;
+            height: 40px;
+            border-radius: 100%;
+            overflow: hidden;
+        }
+        .post-account-img img{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .post-account-name{
+            width: 80%;
+            height: 100%;
+        }
+        .post-photo{
+            background-color: #dedede;
+            width: 100%;
+            height: 150px;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            overflow: hidden;
+        }
+        .post-photo img{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .post-info{
+            background-color: var(--tertiary);
+            width: 100%;
+            height: 100px;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="post">
+        <div class="post-account">
+            <div class="post-account-img">
+                <img src="imgs/1413823428-amazingly-free-stock-websites.jpg" alt="">
+            </div>
+            <div class="post-account-name"></div>
+        </div>
+        <div class="post-photo">
+            <img src="imgs/1413823428-amazingly-free-stock-websites.jpg" alt="">
+        </div>
+        <div class="post-info"></div>
+    </div>
+    
+    
+    
+    <script>
+        var postPhoto = document.querySelector(".post-photo img")
+        console.log(postPhoto)
+        
+        var imgIndex = Math.ceil(Math.random() * 5)
+        
+        postPhoto.src = `imgs/${imgIndex}.jpg`
+        
+        
+        var postAccountImg = document.querySelector(".post-account-img img")
+        console.log(postAccountImg)
+        
+        var accountImgIndex = Math.ceil(Math.random() * 5)
+        
+        postAccountImg.src = `imgs/${accountImgIndex}.jpg`
+        
+        // Генерация текста
+        var wordString = "Lorem ipsum dolor sit amet consectetur adipisicing elit Veniam at quidem provident corporis consequuntur mollitia reprehenderit ipsa sequi aut distinctio aliquam ad optio alias repellendus ducimus quo Vero aliquid dicta molestiae unde cum quia quo sunt consectetur optio aut excepturi aspernatur quos praesentium Molestias eius a voluptatum cumque aliquid aspernatur maxime quo molestiae asperiores consequuntur natus sunt saepe cum voluptates libero blanditiis Vel non harum rerum reprehenderit Animi ea necessitatibus atque ad quas error molestias Voluptate necessitatibus repellat amet placeat delectus temporibus harum veniam eum quas veritatis ullam nulla consequuntur eos quod vitae error earum excepturi Animi debitis molestiae dolorem"
+        
+        var i = 0
+        var current = 0
+        var target = Math.ceil(Math.random() * 10)
+        var word = ""
+        while(i < wordString.length){
+            word += wordString[i]
+            if(wordString[i] === " "){
+                current += 1
+            }
+            if(current >= target){
+                break
+            } else if (wordString[i] === " "){
+                word = ""
+            }
+            i++
+        }
+        console.log(word, current, target)
+        
+        
+    </script>
+</body>
+</html>
